@@ -1,6 +1,6 @@
 <div align="center">
   <a name="readme-top"></a>
-  <h1><a href="https://www.billionmail.com/" target="_blank">BillionMail 📧</a></h1>
+  <h1><a href="https://www.billionmail.com/" target="_blank">Digital Bmail 📧</a></h1>
 
 
 ## An Open-Source MailServer, NewsLetter, Email Marketing Solution for Smarter Campaigns
@@ -15,16 +15,16 @@ English | [简体中文](README-zh_CN.md) | [日本語](README-ja.md) | [Türkç
 <a href="https://trendshift.io/repositories/13842" target="_blank"><img src="https://trendshift.io/api/badge/repositories/13842" alt="aaPanel%2FBillionMail | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 </div>
 
-## What is BillionMail?
+## What is Digital Bmail?
 
-BillionMail is a **future open-source Mail server, Email marketing platform** designed to help businesses and individuals manage their email campaigns with ease. Whether you're sending newsletters, promotional emails, or transactional messages, this tool will provide **full control** over your email marketing efforts. With features like **advanced analytics**, and **customer management**, you'll be able to create, send, and track emails like a pro.
+Digital Bmail is a **future open-source Mail server, Email marketing platform** designed to help businesses and individuals manage their email campaigns with ease. Whether you're sending newsletters, promotional emails, or transactional messages, this tool will provide **full control** over your email marketing efforts. With features like **advanced analytics**, and **customer management**, you'll be able to create, send, and track emails like a pro.
 
-![BillionMail Banner](https://www.billionmail.com/home.png?v1)
+![Digital Bmail Banner](https://www.billionmail.com/home.png?v1)
 
 # Just 3 steps to send a billion emails!
 **Billion emails. Any business. Guaranteed.**
 
-### Step 1️⃣ Install BillionMail: 
+### Step 1️⃣ Install Digital Bmail: 
 ✅ It takes **only 8️⃣ minutes** from installation to **✅ successful email sending**
 ```shell
 cd /opt && git clone https://github.com/aaPanel/BillionMail && cd BillionMail && bash install.sh
@@ -80,12 +80,12 @@ cd /opt && git clone https://github.com/aaPanel/BillionMail && cd BillionMail &&
 
   `bm show-record`
 
-- Update BillionMail
+- Update Digital Bmail
 
   `bm update`
 
 ## Live Demo
-BillionMail Demo: [https://demo.billionmail.com/billionmail](https://demo.billionmail.com/billionmail)
+Digital Bmail Demo: [https://demo.billionmail.com/billionmail](https://demo.billionmail.com/billionmail)
 
 Username: `billionmail` 
 
@@ -94,11 +94,11 @@ Password: `billionmail`
 
 ## WebMail
 
-BillionMail has integrated **RoundCube**, you can access WebMail via `/roundcube/`.
+Digital Bmail has integrated **RoundCube**, you can access WebMail via `/roundcube/`.
 
-## Why BillionMail?
+## Why Digital Bmail?
 
-Most email marketing platforms are either **expensive**, **closed-source**, or **lack essential features**. BillionMail aims to be different:
+Most email marketing platforms are either **expensive**, **closed-source**, or **lack essential features**. Digital Bmail aims to be different:
 
 ✅ **Fully Open-Source** – No hidden costs, no vendor lock-in.  
 📊 **Advanced Analytics** – Track email delivery, open rates, click-through rates, and more.  
@@ -109,16 +109,16 @@ Most email marketing platforms are either **expensive**, **closed-source**, or *
 
 ## How You Can Help 🌟
 
-BillionMail is a **community-driven project**, and we need your support to get started! Here's how you can help:
+Digital Bmail is a **community-driven project**, and we need your support to get started! Here's how you can help:
 
 1. **Star This Repository**: Show your interest by starring this repo.  
-2. **Spread the Word**: Share BillionMail with your network—developers, marketers, and open-source enthusiasts.  
-3. **Share Feedback**: Let us know what features you'd like to see in BillionMail by opening an issue or joining the discussion.  
+2. **Spread the Word**: Share Digital Bmail with your network—developers, marketers, and open-source enthusiasts.  
+3. **Share Feedback**: Let us know what features you'd like to see in Digital Bmail by opening an issue or joining the discussion.  
 4. **Contribute**: Once development begins, we'll welcome contributions from the community. Stay tuned for updates!
 
 ---
 
-📧 **BillionMail – The Future of Open-Source Email Marketing.**
+📧 **Digital Bmail – The Future of Open-Source Email Marketing.**
 
 ## Issues
 
@@ -146,7 +146,7 @@ cd /opt && git clone https://github.com/aaPanel/BillionMail && cd BillionMail &&
 
 ## License
 
-BillionMail is licensed under the **AGPLv3 License**. This means you can:
+Digital Bmail is licensed under the **AGPLv3 License**. This means you can:
 
 ✅ Use the software for free.  
 ✅ Modify and distribute the code.  
@@ -156,10 +156,10 @@ See the [LICENSE](LICENSE) file for more details.
 
 ---
 
-<!-- BillionMail official link -->
+<!-- BillingMail official link -->
 [docs-link]: https://www.billionmail.com/
 
-<!-- BillionMail Other link-->
+<!-- BillingMail Other link-->
 [license-link]: https://www.gnu.org/licenses/agpl-3.0.html
 [github-release-link]: https://github.com/aaPanel/BillionMail/releases/latest
 [github-stars-link]: https://github.com/aaPanel/BillionMail
@@ -170,4 +170,5 @@ See the [LICENSE](LICENSE) file for more details.
 [github-release-shield]: https://img.shields.io/github/v/release/aaPanel/BillionMail
 [github-stars-shield]: https://img.shields.io/github/stars/aaPanel/BillionMail?color=%231890FF&style=flat-square   
 [license-shield]: https://img.shields.io/github/license/aaPanel/BillionMail
+
 

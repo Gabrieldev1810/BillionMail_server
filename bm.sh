@@ -4,7 +4,7 @@ export PATH
 
 # Add domain name and email
 
-CONTAINER_PROJECT_NAME=billionmail
+CONTAINER_PROJECT_NAME=digital-bmail
 PGSQL_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-pgsql-billionmail-1"
 DOVECOT_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-dovecot-billionmail-1"
 POSTFIX_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-postfix-billionmail-1"
@@ -20,11 +20,11 @@ fi
 PWD_d=`pwd`
 
 SWITCH_TO_BILLIONMAIL_DIR(){
-    if [ -f "/opt/PWD-Billion-Mail.txt" ]; then
-        DIR=$(cat /opt/PWD-Billion-Mail.txt)
+    if [ -f "/opt/PWD-Digital-Bmail.txt" ]; then
+        DIR=$(cat /opt/PWD-Digital-Bmail.txt)
         if [ -d "${DIR}" ]; then
             cd "${DIR}"
-            echo "Enter the BillionMail project directory: ${DIR}"
+            echo "Enter the Digital Bmail project directory: ${DIR}"
         fi
     fi
 }
@@ -40,7 +40,7 @@ fi
 
 if [ ! -s ".env" ]; then
     ls -al
-    echo " The .env file does not exist. Cannot continue operation, please operate in the BillionMail project directory"
+    echo " The .env file does not exist. Cannot continue operation, please operate in the Digital Bmail project directory"
     exit 1
 fi
 
@@ -531,14 +531,14 @@ Default_info() {
 
     LOCAL_IP=$(ip addr | grep -E -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -E -v "^127\.|^255\.|^0\." | head -n 1)
     echo -e "=================================================================="
-    echo -e "\033[32mBillionMail default info!\033[0m"
+    echo -e "\033[32mDigital Bmail default info!\033[0m"
     echo -e "=================================================================="
     pool=https
 
     if [ -f "core-data/billionmail_hostname.txt" ];then
         BILLIONMAIL_Domain=$(cat core-data/billionmail_hostname.txt)
         if [ "${HTTPS_PORT}" = "443" ];then
-            echo  "BillionMail Domain Address:        ${pool}://${BILLIONMAIL_Domain}/${SafePath}"
+            echo  "Digital Bmail Domain Address:        ${pool}://${BILLIONMAIL_Domain}/${SafePath}"
         else
             echo  "BillionMail Domain Address:        ${pool}://${BILLIONMAIL_Domain}:${HTTPS_PORT}/${SafePath}"
         fi
@@ -546,21 +546,21 @@ Default_info() {
     
     if [ "${ipv6_address}" ];then
         if [ "${HTTPS_PORT}" = "443" ];then
-            echo  "BillionMail Internet IPv6 Address: ${pool}://${ipv6_address}/${SafePath}"
+            echo  "Digital Bmail Internet IPv6 Address: ${pool}://${ipv6_address}/${SafePath}"
         else
             echo  "BillionMail Internet IPv6 Address: ${pool}://${ipv6_address}:${HTTPS_PORT}/${SafePath}"
         fi
     fi
     if [ "${ipv4_address}" ];then
         if [ "${HTTPS_PORT}" = "443" ];then
-            echo  "BillionMail Internet IPv4 Address: ${pool}://${ipv4_address}/${SafePath}"
+            echo  "Digital Bmail Internet IPv4 Address: ${pool}://${ipv4_address}/${SafePath}"
         else
             echo  "BillionMail Internet IPv4 Address: ${pool}://${ipv4_address}:${HTTPS_PORT}/${SafePath}"
         fi
     fi
     if [ "${address}" ];then
         if [ "${HTTPS_PORT}" = "443" ];then
-            echo  "BillionMail Internet Address:      ${pool}://${address}/${SafePath}"
+            echo  "Digital Bmail Internet Address:      ${pool}://${address}/${SafePath}"
         else
             echo  "BillionMail Internet Address:      ${pool}://${address}:${HTTPS_PORT}/${SafePath}"
         fi
@@ -568,14 +568,14 @@ Default_info() {
     fi
 
     if [ "${HTTPS_PORT}" = "443" ];then
-        echo  "BillionMail Internal Address:      ${pool}://${LOCAL_IP}/${SafePath}"
+        echo  "Digital Bmail Internal Address:      ${pool}://${LOCAL_IP}/${SafePath}"
     else
         echo  "BillionMail Internal Address:      ${pool}://${LOCAL_IP}:${HTTPS_PORT}/${SafePath}"
     fi
     
     echo -e "Username: ${ADMIN_USERNAME} \nPassword: ${ADMIN_PASSWORD}"
     echo -e "\033[33mWarning:\033[0m"
-    echo -e "\033[33mIf you cannot access the BillionMail, \033[0m"
+    echo -e "\033[33mif you cannot access the Digital Bmail, \033[0m"
     echo -e "\033[33mrelease the following port ${SMTP_PORT}|${SMTPS_PORT}|${SUBMISSION_PORT}|${POP_PORT}|${IMAP_PORT}|${IMAPS_PORT}|${POPS_PORT}|${HTTP_PORT}|${HTTPS_PORT} in the security group\033[0m"
     echo -e "=================================================================="
 }
@@ -604,7 +604,7 @@ MODIFY_HTTP_SSL_PORT() {
 
     # Perform modification
     sed -i 's/^HTTP_PORT=.*/HTTP_PORT='"${NEW_PORT}"'/' .env
-    echo -e "The BillionMail apply SSL port has been modified to: ${NEW_PORT} \n Rebuild the container, please wait..."
+    echo -e "The Digital Bmail apply SSL port has been modified to: ${NEW_PORT} \n Rebuild the container, please wait..."
 
     sleep 3
     # Find the container ID of the core image in the current project and rebuild the container
@@ -618,7 +618,7 @@ MODIFY_HTTP_SSL_PORT() {
         ${DOCKER_COMPOSE} up -d
     else
         echo "The "core" container does not exist"
-        echo "Starting BillionMail..."
+        echo "Starting Digital Bmail..."
         ${DOCKER_COMPOSE} up -d
     fi
 
@@ -643,7 +643,7 @@ MODIFY_HTTPS_PORT() {
 
     NEW_PORT="$2"
     if [ -z "${NEW_PORT}" ]; then
-        read -p "Please enter the new BillionMail management port: " NEW_PORT
+        read -p "Please enter the new Digital Bmail management port: " NEW_PORT
     fi
 
     # Verify that the input is a number
@@ -662,11 +662,11 @@ MODIFY_HTTPS_PORT() {
     # Perform modification
     sed -i 's/^HTTPS_PORT=.*/HTTPS_PORT='"${NEW_PORT}"'/' .env
     if [ $? -ne 0 ]; then
-        echo -e "\033[31m Error: The BillionMail management port modification failed! \033[0m"
+        echo -e "\033[31m Error: The Digital Bmail management port modification failed! \033[0m"
         exit 1
     fi
     
-    echo -e "The BillionMail management port has been modified to: ${NEW_PORT} \n Rebuild the container, please wait..."
+    echo -e "The Digital Bmail management port has been modified to: ${NEW_PORT} \n Rebuild the container, please wait..."
     sleep 3
     # Find the container ID of the core image in the current project and rebuild the container
     # CONTAINER_ID=$(${DOCKER_COMPOSE} ps -a --format "{{.ID}} {{.Image}}" |grep "/core:" | awk '{print $1}' )
@@ -726,7 +726,7 @@ MODIFY_TZ() {
     # Perform modification
     sed -i "s|^TZ=.*|TZ=${NEW_TZ}|" .env
     if [ $? -ne 0 ]; then
-        echo -e "\033[31m Error: The BillionMail time zone modification failed! \033[0m"
+        echo -e "\033[31m Error: The Digital Bmail time zone modification failed! \033[0m"
         exit 1
     fi
 
@@ -736,7 +736,7 @@ MODIFY_TZ() {
         sed -i "s|^timezone = .*|timezone = \'${NEW_TZ}\'|" postgresql-data/postgresql.conf
     fi
 
-    echo -e "The BillionMail time zone has been modified to: ${NEW_TZ} \n Rebuild the container, please wait..."
+    echo -e "The Digital Bmail time zone has been modified to: ${NEW_TZ} \n Rebuild the container, please wait..."
     sleep 3
     ${DOCKER_COMPOSE} down
     ${DOCKER_COMPOSE} up -d
@@ -749,7 +749,7 @@ MODIFY_ADMIN_USERNAME() {
 
     NEW_ADMIN="$2"
     if [ -z "${NEW_ADMIN}" ]; then
-        read -p "Please enter the new BillionMail administrator username (minimum 5 characters): " NEW_ADMIN
+        read -p "Please enter the new Digital Bmail administrator username (minimum 5 characters): " NEW_ADMIN
     fi
     if [ -z "${NEW_ADMIN}" ]; then
         echo -e "\033[31mError: Administrator username is required!\033[0m"
@@ -766,10 +766,10 @@ MODIFY_ADMIN_USERNAME() {
     # Perform modification
     sed -i "s|^ADMIN_USERNAME=.*|ADMIN_USERNAME="${NEW_ADMIN}"|" .env
     if [ $? -ne 0 ]; then
-        echo -e "\033[31mError: Failed to update BillionMail administrator username!\033[0m"
+        echo -e "\033[31mError: Failed to update Digital Bmail administrator username!\033[0m"
         exit 1
     fi
-    echo -e "BillionMail administrator username has been updated. Restarting container, please wait..."
+    echo -e "Digital Bmail administrator username has been updated. Restarting container, please wait..."
     sleep 3
     # Find the container ID of the core image in the current project and rebuild the container
     # CONTAINER_ID=$(${DOCKER_COMPOSE} ps -a --format "{{.ID}} {{.Image}}" |grep "/core:" | awk '{print $1}' )
@@ -793,7 +793,7 @@ MODIFY_ADMIN_PASSWORD() {
 
     NEW_PASSWORD="$2"
     if [ -z "${NEW_PASSWORD}" ]; then
-        read -p "Please enter the new BillionMail administrator password (minimum 5 characters): " NEW_PASSWORD
+        read -p "Please enter the new Digital Bmail administrator password (minimum 5 characters): " NEW_PASSWORD
     fi
     if [ -z "${NEW_PASSWORD}" ]; then
         echo -e "\033[31mError: Administrator password is required!\033[0m"

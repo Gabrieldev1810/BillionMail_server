@@ -1,4 +1,4 @@
-name: billionmail
+name: digital-bmail
 
 services:
     pgsql-billionmail:
